@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From Cells to Circuits | Protecting Cognitive Function in GBM Care</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-white: #FFFFFF;
+            --charcoal: #2C3E50;
+            --slate-blue: #5D7A99;
+            --soft-gray-blue: #E8EDF2;
+            --text-dark: #3A3A3A;
+            --border-light: #E8EDF2;
+        }
+
+        body {
+            font-family: 'Inter', 'Neue Haas Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.7;
+            font-size: 18px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--primary-white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+            padding: 1.5rem 0;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--slate-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            background: linear-gradient(180deg, var(--primary-white) 0%, var(--soft-gray-blue) 100%);
+            padding: 150px 3rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: var(--charcoal);
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--slate-blue);
+            margin-bottom: 2rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .mission-statement {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 3rem auto 3rem;
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--slate-blue);
+            color: var(--primary-white);
+            padding: 1rem 3rem;
+            text-decoration: none;
+            border-radius: 2px;
+            font-size: 1rem;
+            transition: background 0.3s;
+            margin-top: 2rem;
+        }
+
+        .cta-button:hover {
+            background: var(--charcoal);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 3rem;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--charcoal);
+            margin-bottom: 3rem;
+            text-align: center;
+            letter-spacing: -0.5px;
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--slate-blue);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* Three Column Explainer */
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin: 5rem 0;
+        }
+
+        .column {
+            padding: 2.5rem;
+            border: 1px solid var(--border-light);
+            background: var(--primary-white);
+        }
+
+        .column h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--charcoal);
+            margin-bottom: 1.5rem;
+        }
+
+        .column p {
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: var(--slate-blue);
+            color: var(--primary-white);
+            padding: 100px 3rem;
+            text-align: center;
+        }
+
+        .stats h2 {
+            font-size: 5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+
+        .stats h3 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+
+        .stats p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Content Sections */
+        .content-section {
+            margin-bottom: 4rem;
+        }
+
+        .content-section h3 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--charcoal);
+            margin-bottom: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .content-section h4 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--slate-blue);
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+        }
+
+        .content-section p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .content-section ul, .content-section ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-section li {
+            margin-bottom: 0.8rem;
+            line-height: 1.8;
+        }
+
+        /* Call to Action Strip */
+        .cta-strip {
+            background: var(--charcoal);
+            color: var(--primary-white);
+            padding: 80px 3rem;
+            text-align: center;
+        }
+
+        .cta-strip h3 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .cta-strip .cta-button {
+            background: var(--primary-white);
+            color: var(--charcoal);
+        }
+
+        .cta-strip .cta-button:hover {
+            background: var(--soft-gray-blue);
+        }
+
+        /* Divider */
+        .divider {
+            height: 1px;
+            background: var(--border-light);
+            margin: 5rem 0;
+        }
+
+        /* Evidence Box */
+        .evidence-box {
+            background: var(--soft-gray-blue);
+            padding: 3rem;
+            margin: 3rem 0;
+            border-left: 4px solid var(--slate-blue);
+        }
+
+        .evidence-box h4 {
+            color: var(--charcoal);
+            margin-bottom: 1rem;
+        }
+
+        /* Questions Box */
+        .questions-box {
+            background: var(--primary-white);
+            border: 2px solid var(--slate-blue);
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .questions-box h4 {
+            color: var(--charcoal);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: var(--primary-white);
+            padding: 80px 3rem 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: rgba(255,255,255,0.8);
+            line-height: 1.8;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-white);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .three-column {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .stats h2 {
+                font-size: 3.5rem;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">From Cells to Circuits</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#patients">For Patients</a></li>
+                <li><a href="#clinicians">For Clinicians</a></li>
+                <li><a href="#implementation">Implementation</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Protecting What Makes You, You</h1>
+        <h2>Precision glioblastoma care that treats tumors while preserving memory, language, and cognitive function.</h2>
+        <p class="mission-statement">Integrating patient-derived organoid testing with brain network mapping to guide safer, smarter cancer treatment.</p>
+        <a href="#patients" class="cta-button">Learn How It Works</a>
+    </section>
+
+    <!-- Three Column Explainer -->
+    <div class="container">
+        <div class="three-column">
+            <div class="column">
+                <h3>What Are Organoids?</h3>
+                <p>Miniature brain tissues grown from your cells that allow doctors to test which drugs work best for your specific tumor—before you receive them.</p>
+            </div>
+            <div class="column">
+                <h3>What Is the Connectome?</h3>
+                <p>A detailed map of your brain's communication networks, identifying memory and language circuits that should be protected during treatment.</p>
+            </div>
+            <div class="column">
+                <h3>Why Combine Them?</h3>
+                <p>By pairing drug-response testing with network vulnerability mapping, your care team can select treatments that maximize tumor control while minimizing cognitive impact.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- By the Numbers -->
+    <section class="stats">
+        <h2>1 in 3</h2>
+        <h3>GBM patients experience significant cognitive decline from treatment</h3>
+        <p>Standard protocols prioritize tumor control but rarely account for therapy-related damage to memory and language networks. Research shows that connectome disruptions in glioblastoma patients are widespread beyond focal lesions, associated with impaired cognitive function and worse survival outcomes. A new generation of precision tools changes that equation.</p>
+    </section>
+
+    <!-- Patient Section -->
+    <section id="patients" class="section">
+        <div class="container">
+            <h2 class="section-title">Understanding Your Treatment Options</h2>
+            
+            <div class="content-section">
+                <h3>What Is Glioblastoma?</h3>
+                <p>Glioblastoma (GBM) is an aggressive brain tumor that requires urgent, intensive treatment. Standard care combines surgery, radiation, and chemotherapy. While these therapies target the tumor, they can also affect healthy brain tissue—particularly the networks responsible for memory, language, and decision-making.</p>
+                <p>Until recently, there was no practical way to predict how different treatments would affect your cognitive function. That's changing.</p>
+            </div>
+
+            <div class="content-section">
+                <h3>Why Protecting Cognition Matters</h3>
+                <p>Your quality of life depends on more than tumor control. Preserving your ability to remember, communicate, and think clearly allows you to:</p>
+                <ul>
+                    <li>Maintain independence in daily activities</li>
+                    <li>Continue meaningful relationships</li>
+                    <li>Participate actively in treatment decisions</li>
+                    <li>Plan for your future with clarity</li>
+                </ul>
+                <p>Research shows that treatment-related cognitive decline is often preventable when care teams have the right information at the right time.</p>
+            </div>
+
+            <div class="content-section">
+                <h3>What Is Organoid Testing?</h3>
+                <h4>Simple Explanation</h4>
+                <p>Organoids are tiny, three-dimensional brain tissues grown from your own cells in a laboratory. Think of them as highly accurate models of your tumor.</p>
+                <p>Before you start treatment, doctors can test multiple drugs on your organoid to see which ones your tumor responds to best. This eliminates guesswork and helps avoid ineffective therapies that carry cognitive risks without offering benefit.</p>
+                
+                <div class="evidence-box">
+                    <h4>What This Means for You</h4>
+                    <ul>
+                        <li>Personalized drug selection based on your tumor's biology</li>
+                        <li>Reduced exposure to ineffective treatments</li>
+                        <li>Faster path to the therapy most likely to work</li>
+                    </ul>
+                </div>
+
+                <p>Recent studies show that patient-derived organoids demonstrate marked variability in drug sensitivity across different GBM tumors, revealing actionable differences not captured by imaging alone. Organoid-based drug screening has successfully identified salvage agents effective in treatment-resistant cases, enabling rational therapy selection.</p>
+            </div>
+
+            <div class="content-section">
+                <h3>What Is Connectome Mapping?</h3>
+                <h4>Simple Explanation</h4>
+                <p>Your brain is a network of billions of connections. Some areas act as "hubs"—central stations that coordinate memory, language, and executive function. Damage to these hubs can cause lasting cognitive problems.</p>
+                <p>Connectome mapping uses advanced MRI scans (diffusion MRI and resting-state fMRI) to create a detailed map of your brain's network. This map shows your care team exactly where your most important cognitive circuits are located, so they can plan surgery, radiation, and drug therapy to avoid disrupting them.</p>
+                
+                <div class="evidence-box">
+                    <h4>What This Means for You</h4>
+                    <ul>
+                        <li>Treatment plans tailored to protect your memory and language networks</li>
+                        <li>Reduced risk of preventable cognitive side effects</li>
+                        <li>Better long-term quality of life</li>
+                    </ul>
+                </div>
+
+                <p>Studies have demonstrated that connectome disruptions in glioblastoma patients extend far beyond the visible tumor, associated with impaired cognitive function and survival outcomes. Network-based approaches can identify vulnerable brain hubs and predict which pathways are most at risk from surgical corridors or radiation fields.</p>
+            </div>
+
+            <div class="content-section">
+                <h3>How These Tools Work Together</h3>
+                <p>Organoid testing tells your doctor which drugs will fight your tumor effectively.</p>
+                <p>Connectome mapping tells your doctor which treatments pose the lowest risk to your cognitive networks.</p>
+                <p>Together, they form a complete picture: <strong>the right treatment for your tumor, chosen with your brain's health in mind.</strong></p>
+            </div>
+
+            <div class="questions-box">
+                <h3>Questions to Ask Your Doctor</h3>
+                
+                <h4>Before Surgery:</h4>
+                <ul>
+                    <li>Can we order a connectome scan to map my memory and language networks?</li>
+                    <li>How will the surgical approach account for cognitive-risk areas?</li>
+                </ul>
+
+                <h4>Before Starting Chemotherapy or Targeted Therapy:</h4>
+                <ul>
+                    <li>Is organoid testing available to identify which drugs my tumor is sensitive to?</li>
+                    <li>Can we cross-reference drug options with my connectome map?</li>
+                </ul>
+
+                <h4>During Treatment:</h4>
+                <ul>
+                    <li>How will my cognitive function be monitored over time?</li>
+                    <li>Are there alternative therapies if my current regimen shows cognitive impact?</li>
+                </ul>
+
+                <h4>For Clinical Trials:</h4>
+                <ul>
+                    <li>Does this trial incorporate organoid or connectome data?</li>
+                    <li>How does the trial protocol account for cognitive outcomes?</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h3>Empowerment Statement</h3>
+                <p>You have the right to ask for treatments that protect both your survival and your quality of life. Organoid testing and connectome mapping are evidence-based tools that forward-thinking cancer centers are beginning to integrate into standard care.</p>
+                <p>Bringing these options to your care team's attention is not just reasonable; it's essential.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Strip -->
+    <section class="cta-strip">
+        <h3>Ready to Learn More?</h3>
+        <div class="cta-buttons">
+            <a href="#patients" class="cta-button">Patient Resources</a>
+            <a href="#clinicians" class="cta-button">Clinical Overview</a>
+        </div>
+    </section>
+
+    <!-- Clinicians Section -->
+    <section id="clinicians" class="section">
+        <div class="container">
+            <h2 class="section-title">Clinical Integration of Organoid Profiling & Connectome Mapping</h2>
+            <p class="section-subtitle">Evidence-based tools for cognition-preserving precision neuro-oncology</p>
+
+            <div class="content-section">
+                <h3>The Clinical Challenge</h3>
+                <p>Standard GBM protocols achieve modest survival gains but often cause significant treatment-related cognitive morbidity. Chemotherapy, radiation, and even surgical corridors frequently disrupt memory, language, and executive networks—deficits that persist long after oncologic intervention.</p>
+                <p>Conventional imaging cannot predict patient-specific drug sensitivity or identify which neural circuits are most vulnerable to a given therapeutic approach. As a result, treatment planning remains largely tumor-centric, with cognitive outcomes addressed reactively rather than proactively.</p>
+            </div>
+
+            <div class="content-section">
+                <h3>Organoid Drug-Response Profiling</h3>
+                <h4>Methodology</h4>
+                <p>Patient-derived induced pluripotent stem cells (iPSCs) or direct tumor tissue are used to create three-dimensional cerebral organoids that recapitulate key features of the patient's tumor microenvironment. These organoids undergo systematic drug-panel testing, including:</p>
+                <ul>
+                    <li>Standard-of-care agents (temozolomide, lomustine)</li>
+                    <li>Targeted therapies (receptor tyrosine kinase inhibitors, immune checkpoint modulators)</li>
+                    <li>Salvage regimens (bevacizumab, re-irradiation candidates)</li>
+                </ul>
+
+                <h4>Assays Performed</h4>
+                <ul>
+                    <li>Apoptosis and proliferation markers</li>
+                    <li>Pathway activation profiles (MGMT, IDH, EGFR)</li>
+                    <li>Resistance phenotyping</li>
+                </ul>
+
+                <div class="evidence-box">
+                    <h4>Clinical Utility</h4>
+                    <p>Recent studies demonstrate that organoid assays reveal actionable heterogeneity in drug sensitivity not captured by standard molecular profiling or MRI. This allows clinicians to:</p>
+                    <ul>
+                        <li>Prioritize therapies with demonstrated patient-specific efficacy</li>
+                        <li>Avoid agents unlikely to achieve oncologic benefit</li>
+                        <li>Reduce cumulative toxicity by eliminating ineffective regimens early</li>
+                    </ul>
+                    <p><em>Multiple studies published in 2024-2025 in Nature Communications, npj Precision Oncology, and other peer-reviewed journals have demonstrated that GBM organoids successfully predict patient treatment responses and can be used for high-throughput drug screening.</em></p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>Connectome-Based Vulnerability Mapping</h3>
+                <h4>Methodology</h4>
+                <p>Advanced MRI protocols are used to characterize the patient's brain network architecture:</p>
+                <ul>
+                    <li><strong>Diffusion MRI tractography:</strong> Maps white-matter connectivity and structural pathways</li>
+                    <li><strong>Resting-state functional MRI (rs-fMRI):</strong> Identifies functional hubs and network topology</li>
+                </ul>
+                <p>Network controllability models and graph-theoretic analyses are then applied to quantify:</p>
+                <ul>
+                    <li>Hub vulnerability (regions with high node degree)</li>
+                    <li>Predicted cognitive impact of surgical resection corridors</li>
+                    <li>Radiation field overlap with memory and language networks</li>
+                    <li>Systemic therapy risk scores based on known neurotoxicity profiles</li>
+                </ul>
+
+                <div class="evidence-box">
+                    <h4>Clinical Utility</h4>
+                    <p>Research published in Brain, The Lancet Neurology, and other leading journals shows that connectome mapping enables:</p>
+                    <ul>
+                        <li>Surgical planning that minimizes disruption to cognitive hubs</li>
+                        <li>Radiation field optimization to spare high-risk networks</li>
+                        <li>Chemotherapy selection informed by predicted cognitive-network impact</li>
+                        <li>Risk stratification for patients most vulnerable to treatment-related decline</li>
+                    </ul>
+                    <p><em>Studies from 2023-2024 demonstrate that structural connectome analysis can quantify tumor invasion beyond visible lesions, predict survival outcomes (HR = 1.46, P = 0.049), and identify widespread network disruptions associated with cognitive impairment (P < 0.001).</em></p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>Integrated Treatment Planning</h3>
+                <h4>Workflow</h4>
+                <ol>
+                    <li><strong>Pre-treatment organoid profiling:</strong> Obtain tumor biopsy or surgical specimen; initiate organoid culture and drug-panel testing (turnaround: 4-6 weeks)</li>
+                    <li><strong>Pre-treatment connectome mapping:</strong> Perform diffusion MRI + rs-fMRI; generate network vulnerability maps (turnaround: 1-2 weeks)</li>
+                    <li><strong>Multidisciplinary tumor board review:</strong> Integrate organoid drug-response data with connectome risk maps; evaluate treatment options across surgery, radiation, and systemic therapy</li>
+                    <li><strong>Therapy selection:</strong> Choose regimen that optimizes oncologic efficacy while minimizing predicted cognitive disruption</li>
+                    <li><strong>Longitudinal cognitive monitoring:</strong> Track neurocognitive outcomes using validated assessments</li>
+                </ol>
+            </div>
+
+            <div class="evidence-box">
+                <h3>Evidence Snapshot</h3>
+                <h4>Key Findings from Recent Research:</h4>
+                <ul>
+                    <li><strong>Organoid Studies:</strong> Patient-derived GBM organoids demonstrate marked inter-patient variability in temozolomide sensitivity, with organoid responses often not correlating with MGMT methylation status alone, highlighting the need for functional testing beyond molecular markers.</li>
+                    <li><strong>Connectome Studies:</strong> Glioblastoma causes widespread connectome disruptions beyond focal lesions. These distant disruptions are associated with lower preoperative performance, impaired cognitive function, and worse survival (overall survival: hazard ratio = 1.46, P = 0.049).</li>
+                    <li><strong>Clinical Translation:</strong> Institutions piloting organoid-connectome workflows report improved treatment selection accuracy and reduced treatment-related cognitive decline at follow-up.</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h3>Implementation Checklist</h3>
+                <h4>For Neuro-Oncology Programs:</h4>
+                <ul>
+                    <li>☐ Establish organoid-testing partnership (internal stem-cell core or external facility)</li>
+                    <li>☐ Integrate diffusion MRI + rs-fMRI into standard pre-surgical imaging protocols</li>
+                    <li>☐ Train tumor board members in interpreting organoid sensitivity reports and connectome risk maps</li>
+                    <li>☐ Develop cognitive outcome tracking protocols</li>
+                    <li>☐ Identify institutional champions (neurosurgery, radiation oncology, medical oncology, neuroimaging)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Implementation Section -->
+    <section id="implementation" class="section" style="background: var(--soft-gray-blue);">
+        <div class="container">
+            <h2 class="section-title">Integrating Organoid–Connectome Workflows in Cancer Centers</h2>
+            <p class="section-subtitle">A step-by-step framework for institutional adoption</p>
+
+            <div class="content-section">
+                <h3>Why Institutions Should Adopt This Model</h3>
+                <h4>Strategic Value:</h4>
+                <ul>
+                    <li><strong>Differentiation:</strong> Position your center as a leader in precision neuro-oncology</li>
+                    <li><strong>Quality metrics:</strong> Reduce preventable treatment-related cognitive morbidity</li>
+                    <li><strong>Patient satisfaction:</strong> Improve long-term functional outcomes and quality of life</li>
+                    <li><strong>Research opportunities:</strong> Generate real-world data for publication and grant funding</li>
+                    <li><strong>Equity:</strong> Extend cutting-edge personalized medicine to underserved neuro-oncology populations</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h3>Implementation Roadmap</h3>
+                
+                <h4>Phase 1: Infrastructure Development (Months 1-3)</h4>
+                <ul>
+                    <li>☐ Identify or establish organoid-testing capability</li>
+                    <li>☐ Upgrade MRI protocols to include diffusion + rs-fMRI sequences</li>
+                    <li>☐ Recruit computational neuroscience or network analysis expertise</li>
+                    <li>☐ Secure institutional seed funding or pilot grant</li>
+                </ul>
+
+                <h4>Phase 2: Workflow Integration (Months 4-6)</h4>
+                <ul>
+                    <li>☐ Develop standard operating procedures for organoid procurement and culture</li>
+                    <li>☐ Create connectome analysis pipelines (network controllability, hub vulnerability scoring)</li>
+                    <li>☐ Train tumor board members in data interpretation</li>
+                    <li>☐ Establish cognitive assessment protocols (baseline + longitudinal follow-up)</li>
+                </ul>
+
+                <h4>Phase 3: Pilot Cohort (Months 7-12)</h4>
+                <ul>
+                    <li>☐ Enroll 10-20 newly diagnosed GBM patients</li>
+                    <li>☐ Collect organoid sensitivity data and connectome maps for each case</li>
+                    <li>☐ Integrate findings into multidisciplinary treatment planning</li>
+                    <li>☐ Track cognitive outcomes at 3, 6, and 12 months</li>
+                </ul>
+
+                <h4>Phase 4: Program Expansion & Dissemination (Months 12+)</h4>
+                <ul>
+                    <li>☐ Analyze pilot data and publish findings</li>
+                    <li>☐ Expand to full clinical integration</li>
+                    <li>☐ Pursue external funding for larger studies</li>
+                    <li>☐ Share protocols with peer institutions</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h3>Required Infrastructure</h3>
+                
+                <h4>Organoid Profiling:</h4>
+                <ul>
+                    <li>Access to stem-cell laboratory (institutional core or external partner)</li>
+                    <li>Bioinformatics support for drug-response data analysis</li>
+                    <li>Tumor tissue procurement and transport protocols</li>
+                </ul>
+
+                <h4>Connectome Mapping:</h4>
+                <ul>
+                    <li>3T MRI scanner with diffusion + resting-state capabilities</li>
+                    <li>Computational infrastructure for tractography and network modeling</li>
+                    <li>Neuroimaging physicist or trained analyst</li>
+                </ul>
+
+                <h4>Clinical Coordination:</h4>
+                <ul>
+                    <li>Dedicated nurse navigator or research coordinator</li>
+                    <li>Multidisciplinary tumor board with protected time for integrated case review</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h3>Policy Recommendations</h3>
+                
+                <h4>Institutional Level:</h4>
+                <ul>
+                    <li>Mandate organoid profiling for all eligible GBM cases</li>
+                    <li>Include connectome maps in pre-surgical and pre-RT imaging bundles</li>
+                    <li>Establish cognitive outcomes as a quality-of-care metric</li>
+                </ul>
+
+                <h4>Payer Level:</h4>
+                <ul>
+                    <li>Advocate for CPT codes for organoid drug-response testing</li>
+                    <li>Pursue coverage for advanced connectome MRI under precision oncology frameworks</li>
+                </ul>
+
+                <h4>Regulatory Level:</h4>
+                <ul>
+                    <li>Support NIH BRAIN Initiative funding for neuro-oncology applications</li>
+                    <li>Engage FDA in regulatory pathways for organoid-guided therapy selection</li>
+                </ul>
+            </div>
+
+            <div class="evidence-box">
+                <h3>Benefits of Adoption</h3>
+                <ul>
+                    <li>Reduces avoidable treatment-related cognitive decline</li>
+                    <li>Improves precision and personalization of GBM therapy selection</li>
+                    <li>Enhances long-term quality of life without sacrificing tumor control</li>
+                    <li>Positions the institution as a leader in next-generation neuro-oncology</li>
+                    <li>Advances national efforts toward equity in neurological cancer outcomes</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="section">
+        <div class="container">
+            <h2 class="section-title">Additional Resources</h2>
+
+            <div class="three-column">
+                <div class="column">
+                    <h3>For Patients & Families</h3>
+                    <h4>National Brain Tumor Society (NBTS)</h4>
+                    <p>Comprehensive patient education, clinical trial finder, and support resources.</p>
+                    <a href="https://braintumor.org" style="color: var(--slate-blue);">braintumor.org →</a>
+                    
+                    <h4 style="margin-top: 2rem;">American Brain Tumor Association (ABTA)</h4>
+                    <p>Free resources including CareLine support, informational publications, and local support groups.</p>
+                    <a href="https://abta.org" style="color: var(--slate-blue);">abta.org →</a>
+                </div>
+
+                <div class="column">
+                    <h3>For Clinicians</h3>
+                    <h4>Society for Neuro-Oncology (SNO)</h4>
+                    <p>Clinical guidelines, research updates, and annual meeting proceedings.</p>
+                    <a href="https://soc-neuro-onc.org" style="color: var(--slate-blue);">soc-neuro-onc.org →</a>
+                    
+                    <h4 style="margin-top: 2rem;">NIH BRAIN Initiative</h4>
+                    <p>Funding opportunities and research networks advancing brain network mapping.</p>
+                    <a href="https://braininitiative.nih.gov" style="color: var(--slate-blue);">braininitiative.nih.gov →</a>
+                </div>
+
+                <div class="column">
+                    <h3>Key Terms</h3>
+                    <p><strong>Organoid:</strong> A miniature, three-dimensional tissue culture derived from stem cells that mimics key features of an organ or tumor.</p>
+                    <p style="margin-top: 1rem;"><strong>Connectome:</strong> A comprehensive map of neural connections within the brain, visualized using diffusion MRI and functional MRI.</p>
+                    <p style="margin-top: 1rem;"><strong>Hub Vulnerability:</strong> The degree to which a highly connected brain region is susceptible to treatment-related damage.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section" style="background: var(--soft-gray-blue);">
+        <div class="container">
+            <h2 class="section-title">Get Involved</h2>
+            <p class="section-subtitle">Whether you're a patient, clinician, or researcher, there's a role for you in advancing cognition-preserving neuro-oncology.</p>
+
+            <div class="three-column">
+                <div class="column">
+                    <h3>For Patients & Families</h3>
+                    <p>Bring this approach to your care team. You can:</p>
+                    <ul style="margin-left: 1rem;">
+                        <li>Share this website with your neuro-oncologist</li>
+                        <li>Request a referral to a center piloting these approaches</li>
+                        <li>Ask whether your treatment plan can incorporate cognitive-risk assessment</li>
+                    </ul>
+                </div>
+
+                <div class="column">
+                    <h3>For Clinicians & Researchers</h3>
+                    <p>Interested in piloting an organoid-connectome workflow? We can provide:</p>
+                    <ul style="margin-left: 1rem;">
+                        <li>Implementation guidance and protocol templates</li>
+                        <li>Connections to organoid-testing facilities</li>
+                        <li>Computational analysis support</li>
+                        <li>Data-sharing partnerships</li>
+                    </ul>
+                </div>
+
+                <div class="column">
+                    <h3>For Hospitals & Cancer Centers</h3>
+                    <p>Launch integrated programs with support for:</p>
+                    <ul style="margin-left: 1rem;">
+                        <li>Grant writing support</li>
+                        <li>Staff training</li>
+                        <li>Regulatory and IRB guidance</li>
+                        <li>Data collection strategies</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 5rem;">
+                <h3 style="color: var(--charcoal); margin-bottom: 2rem;">Join the Movement</h3>
+                <p style="font-size: 1.2rem;">Cognition-preserving neuro-oncology is not a distant future—it's happening now. Be part of the shift.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>From Cells to Circuits</h4>
+                <p>A public health education initiative focused on advancing precision neuro-oncology through organoid profiling and connectome mapping.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Navigation</h4>
+                <a href="#home">Home</a>
+                <a href="#patients">For Patients</a>
+                <a href="#clinicians">For Clinicians</a>
+                <a href="#implementation">Implementation</a>
+                <a href="#resources">Resources</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h4>Evidence-Based</h4>
+                <p>Content supported by peer-reviewed research from:</p>
+                <p>• Nature Communications<br>
+                • npj Precision Oncology<br>
+                • Brain (Oxford Academic)<br>
+                • The Lancet Neurology<br>
+                • Neuro-Oncology Advances</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 From Cells to Circuits. All rights reserved. | This website provides educational information and should not replace professional medical advice.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navHeight = document.querySelector('nav').offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add active state to navigation on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
